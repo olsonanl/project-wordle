@@ -12,7 +12,7 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [guessResults, setGuessResults] = React.useState(["FRIST"]);
+  const [guessResults, setGuessResults] = React.useState([]);
 
   function addGuess(guess) {
     if (guessResults.length >= NUM_OF_GUESSES_ALLOWED) {
@@ -36,15 +36,18 @@ function Game() {
       {success && (
         <div class="happy banner">
           <p>
-            <strong>Congratulations!</strong> Got it in
-            <strong>{guessResults.length} guesses</strong>.
+            <strong>Congratulations!</strong> Got it in{" "}
+            <strong>
+              {guessResults.length} guess{guessResults.length > 1 && "es"}
+            </strong>
+            .
           </p>
         </div>
       )}
       {failure && (
         <div class="sad banner">
           <p>
-            Sorry, the correct answer is <strong>LEARN</strong>.
+            Sorry, the correct answer is <strong>{answer}</strong>.
           </p>
         </div>
       )}
